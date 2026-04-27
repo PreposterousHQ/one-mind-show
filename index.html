@@ -602,6 +602,15 @@
       column-gap: 5%;
       align-items: center;
     }
+    .medium-layout.medium-layout--top {
+      align-items: start;
+    }
+  }
+
+  .medium-image-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
   }
 
   /* Dedication */
@@ -849,9 +858,10 @@
 
   <!-- THE SHOW IS A MEDIUM -->
   <section class="reveal">
-    <div class="medium-layout">
-      <div class="medium-image">
+    <div class="medium-layout medium-layout--top">
+      <div class="medium-image medium-image-stack">
         <img src="assets/the-room-sister.jpg" alt="The conductor's view from stage — audience holding lit phones, screens behind the audience mirroring the network back to itself." loading="lazy" class="section-image" />
+        <img src="assets/oms-panel-audience.png" alt="Storyboard panels of the live netweaving — phones lit like candles, connection threads cast on the big screen, offers logged into DePsy as the audience becomes the cast." loading="lazy" class="section-image" />
       </div>
       <div class="medium-text">
         <span class="section-mark"><span class="roman">III</span>The Show Is A Medium</span>
