@@ -563,6 +563,47 @@
     }
   }
 
+  /* ---------- SECTION III: Show Is A Medium — image left, text right ---------- */
+  .medium-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .image-placeholder {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    background: rgba(212, 166, 71, 0.04);
+    border: 1px solid var(--rule);
+    border-radius: var(--border-radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .image-placeholder span {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+  }
+
+  .section-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-lg);
+  }
+
+  @media (min-width: 720px) {
+    .medium-layout {
+      grid-template-columns: 40% 55%;
+      column-gap: 5%;
+      align-items: center;
+    }
+  }
+
   /* Dedication */
   .dedication {
     text-align: center;
@@ -603,29 +644,38 @@
     margin: 3rem 0 1rem;
   }
 
-  .studio-link {
-    display: inline-block;
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: 0.22em;
-    color: var(--gold);
+  .studio-mark {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
     text-decoration: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    padding: 1rem;
+  }
+
+  .studio-mark img {
+    display: block;
+    width: 240px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .studio-mark-caption {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    color: var(--gold-deep);
     text-transform: uppercase;
-    padding: 1rem 2rem;
-    border: 1px solid var(--rule);
-    transition: all 0.4s ease;
-    margin-top: 1.5rem;
   }
 
-  .studio-link:hover {
-    border-color: var(--gold);
-    background: rgba(212, 166, 71, 0.04);
+  .studio-mark:hover {
+    opacity: 0.85;
+  }
+
+  .studio-mark:hover .studio-mark-caption {
+    color: var(--gold);
     letter-spacing: 0.26em;
-  }
-
-  .studio-link::after {
-    content: " ↗";
-    color: var(--ember);
   }
 
   /* Footer */
@@ -786,16 +836,23 @@
 
   <!-- THE SHOW IS A MEDIUM -->
   <section class="reveal">
-    <span class="section-mark"><span class="roman">III</span>The Show Is A Medium</span>
-    <h2>Theater as <em>interface</em>. Audience as <em>orchestra</em>.</h2>
-    <p>Phones come on like candles. They stay on. They post, they message, they share, they weave. The host walks out, and the show begins — but the show is not the host. The show is <em>every screen in the room briefly belonging to the same evening</em>.</p>
-    <p>Someone in the audience has a connection. <em>I know someone who knows the Patch Adams family. I know someone who can reach Keanu about Filmanthropy. I know a mayor. I know a senator. I know a psychiatrist who needs to meet this work.</em> Their phone goes up on the big screen, and the connection happens live — strangers becoming co-conspirators in front of an audience that's also the cast.</p>
-    <p>Not a fundraiser. Not a panel. Not a performance with a Q&amp;A bolted on. In one night, sometimes in one hour, the kind of connections that take years to engineer happen on their own — because the room is briefly the network, in person, in public, looking each other in the eye.</p>
-    <p>Around the audience, the screens carry the rest of the moviement — voices from people across the world who've lived this, documentary footage that names what gets misnamed, fragments of testimony pouring in from beyond the building. <em>The network doesn't watch the show. The network is the show</em> — looking back at itself, in real time.</p>
-    <p>And every show feeds the next. Quietly, structurally, the way mycelium feeds a forest. What's offered tonight makes the next room richer, even if no one sees the seam.</p>
-    <div class="pull">
-      Concert on the surface.<br /><em>Temple</em> underneath.
-      <span class="pull-attribution">By design</span>
+    <div class="medium-layout">
+      <div class="medium-image">
+        <img src="assets/the-room-sister.jpg" alt="The conductor's view from stage — audience holding lit phones, screens behind the audience mirroring the network back to itself." loading="lazy" class="section-image" />
+      </div>
+      <div class="medium-text">
+        <span class="section-mark"><span class="roman">III</span>The Show Is A Medium</span>
+        <h2>Theater as <em>interface</em>. Audience as <em>orchestra</em>.</h2>
+        <p>Phones come on like candles. They stay on. They post, they message, they share, they weave. The host walks out, and the show begins — but the show is not the host. The show is <em>every screen in the room briefly belonging to the same evening</em>.</p>
+        <p>Someone in the audience has a connection. <em>I know someone who knows the Patch Adams family. I know someone who can reach Keanu about Filmanthropy. I know a mayor. I know a senator. I know a psychiatrist who needs to meet this work.</em> Their phone goes up on the big screen, and the connection happens live — strangers becoming co-conspirators in front of an audience that's also the cast.</p>
+        <p>Not a fundraiser. Not a panel. Not a performance with a Q&amp;A bolted on. In one night, sometimes in one hour, the kind of connections that take years to engineer happen on their own — because the room is briefly the network, in person, in public, looking each other in the eye.</p>
+        <p>Around the audience, the screens carry the rest of the moviement — voices from people across the world who've lived this, documentary footage that names what gets misnamed, fragments of testimony pouring in from beyond the building. <em>The network doesn't watch the show. The network is the show</em> — looking back at itself, in real time.</p>
+        <p>And every show feeds the next. Quietly, structurally, the way mycelium feeds a forest. What's offered tonight makes the next room richer, even if no one sees the seam.</p>
+        <div class="pull">
+          Concert on the surface.<br /><em>Temple</em> underneath.
+          <span class="pull-attribution">By design</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -852,7 +909,10 @@
     <h2>One <em>room</em> inside a larger one.</h2>
     <p>A One Mind Show is not the <em>full story</em>! It is one room inside a larger one — a Civil Rights Moviement for the Soul that lives across stage, screen, story, technology and more. The show is the part you can walk into and enjoy contributing to something that matters — taking <em>social impact entertainment</em> to new heights.</p>
     <div class="ecosystem">
-      <a href="https://storylivingrystudio.info" class="studio-link" target="_blank" rel="noopener">storylivingrystudio.info</a>
+      <a href="https://storylivingrystudio.info" class="studio-mark" target="_blank" rel="noopener" aria-label="Storylivingry Studio — visit storylivingrystudio.info">
+        <img src="assets/storylivingry-logo-transparent.png" alt="Storylivingry Studio" loading="lazy" />
+        <span class="studio-mark-caption">storylivingrystudio.info</span>
+      </a>
     </div>
   </section>
 
