@@ -339,7 +339,7 @@
 
   .section-mark {
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: 13px;
     letter-spacing: 0.28em;
     color: var(--gold-deep);
     text-transform: uppercase;
@@ -472,6 +472,59 @@
     color: var(--ink-soft);
     margin-bottom: 0;
     line-height: 1.55;
+  }
+
+  /* ---------- SECTION I: full-bleed networked-earth background ---------- */
+  #opening {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding: 5rem 0;
+    background-image: url('assets/networked-earth.jpg');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+  }
+
+  #opening::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(14, 11, 8, 1) 0%,
+      rgba(14, 11, 8, 0.65) 18%,
+      rgba(14, 11, 8, 0.65) 82%,
+      rgba(14, 11, 8, 1) 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .opening-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+  }
+
+  #opening .opening-inner > p {
+    font-size: 19.5px;
+    font-weight: 500;
+  }
+
+  #opening .opening-lines p {
+    font-weight: 500;
+  }
+
+  /* Section I — force all text to off-white because of warm-toned background image */
+  #opening .section-mark,
+  #opening .section-mark .roman,
+  #opening .opening-lines p:last-child,
+  #opening p em {
+    color: var(--ink);
   }
 
   /* Dedication */
@@ -670,13 +723,16 @@
 
   <!-- THE OPENING -->
   <section id="opening" class="reveal">
-    <span class="section-mark"><span class="roman">I</span>The Opening</span>
-    <div class="opening-lines">
-      <p>"Welcome to our performance."</p>
-      <p>"Please take a moment to turn on your devices."</p>
+    <div class="opening-inner">
+      <span class="section-mark"><span class="roman">I</span>The Opening</span>
+      <div class="opening-lines">
+        <p>"Welcome to our performance."</p>
+        <p>"Please take a moment to turn on your devices."</p>
+      </div>
+      <p>Every screen in this room is a <em>doorway</em>. Every phone, a candle. Every face on every feed, another seat in a theater that just got <em>bigger than the building</em>.</p>
+      <p>We came here for a show. What we are actually doing is <em>summoning a planetary family</em> — using the same technology that was used against us to <em>find each other instead</em>. To weave solutions ourselves. To prove that change doesn't trickle down from institutions; it rises up from rooms like this.</p>
+      <p>The lights stay low. The screens stay lit. The world is watching itself remember that it has <em>always been one</em>.</p>
     </div>
-    <p>The lights are out. A college theater. The audience holds their phones like candles. Slowly, the screens around the stage begin to mirror the room back to itself — faces, fragments, light, the shape of an audience becoming an audience.</p>
-    <p>The show hasn't started. <em>The show is the room</em>, and it just realized it.</p>
   </section>
 
   <!-- WHAT IT IS -->
@@ -692,9 +748,9 @@
     </div>
   </section>
 
-  <!-- THE SHOW IS A UI -->
+  <!-- THE SHOW IS A MEDIUM -->
   <section class="reveal">
-    <span class="section-mark"><span class="roman">III</span>The Show Is A UI</span>
+    <span class="section-mark"><span class="roman">III</span>The Show Is A Medium</span>
     <h2>Theater as <em>interface</em>. Audience as <em>orchestra</em>.</h2>
     <p>Phones come on like candles. They stay on. They post, they message, they share, they weave. The host walks out, and the show begins — but the show is not the host. The show is <em>every screen in the room briefly belonging to the same evening</em>.</p>
     <p>Someone in the audience has a connection. <em>I know someone who knows the Patch Adams family. I know someone who can reach Keanu about Filmanthropy. I know a mayor. I know a senator. I know a psychiatrist who needs to meet this work.</em> Their phone goes up on the big screen, and the connection happens live — strangers becoming co-conspirators in front of an audience that's also the cast.</p>
@@ -744,7 +800,7 @@
       </div>
     </div>
 
-    <p>Every show is a fundraiser for what stays after the lights go down. <em>The giveback is the point.</em></p>
+    <p>Every show is a funraiser and resource generator for what stays after the lights go down. <em>The giving is the point.</em></p>
   </section>
 
   <!-- ECOSYSTEM -->
