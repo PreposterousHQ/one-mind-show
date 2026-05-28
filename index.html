@@ -222,31 +222,6 @@
   }
 
   /* Scroll indicator */
-  .scroll-cue {
-    position: absolute;
-    bottom: 2.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 5;
-    opacity: 0;
-    animation: fadeUp 1.4s ease-out 3.2s forwards;
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.3em;
-    color: var(--gold-deep);
-    text-transform: uppercase;
-    text-decoration: none;
-  }
-
-  .scroll-cue::after {
-    content: "";
-    display: block;
-    width: 1px;
-    height: 32px;
-    background: var(--gold-deep);
-    margin: 12px auto 0;
-    opacity: 0.5;
-  }
 
   /* Full-bleed image break */
   .stage-reveal {
@@ -783,10 +758,6 @@
       transform: translateX(105%);
     }
     .hero-content,
-    .scroll-cue {
-      opacity: 1;
-      animation: none;
-    }
     .reveal {
       opacity: 1;
       transform: none;
@@ -811,8 +782,7 @@
     </div>
     <div class="hero-banner">Mental Health Reformation</div>
   </div>
-
-  <a href="#opening" class="scroll-cue" aria-label="Scroll to begin">Begin</a>
+
 </header>
 
 <!-- STAGE REVEAL -->
