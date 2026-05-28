@@ -222,6 +222,46 @@
   }
 
   /* Scroll indicator */
+  .hero-logline {
+    font-family: var(--body);
+    font-size: 15px;
+    color: var(--ink-soft);
+    text-align: center;
+    max-width: 480px;
+    margin: 1.8rem auto 0;
+    line-height: 1.65;
+  }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    z-index: 5;
+    opacity: 0;
+    animation: fadeUpCenter 1.4s ease-out 3.2s forwards;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    padding-left: 0.3em;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .scroll-cue::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 32px;
+    background: var(--gold-deep);
+    margin: 12px auto 0;
+    opacity: 0.5;
+  }
+
+  @keyframes fadeUpCenter {
+    0%   { opacity: 0; transform: translateX(-50%) translateY(20px); }
+    100% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  }
 
   /* Full-bleed image break */
   .stage-reveal {
@@ -781,8 +821,10 @@
       Central New Jersey &nbsp;·&nbsp; <span>In Development, 2026</span>
     </div>
     <div class="hero-banner">Mental Health Reformation</div>
+    <p class="hero-logline">One performer. No script. A room full of strangers. One night to actually do something about mental health.</p>
   </div>
-
+
+  <a href="#opening" class="scroll-cue" aria-label="Scroll to begin">Begin</a>
 </header>
 
 <!-- STAGE REVEAL -->
@@ -797,6 +839,15 @@
 
 <main>
 
+  <!-- WHAT THIS IS -->
+  <section class="reveal what-this-is">
+    <h2>What This Is</h2>
+    <p>A live solo performance that is also a community problem-solving session.</p>
+    <p>One performer takes the stage, no script, no panel, no PowerPoint. He has a life story. The audience has phones. Together they have more intelligence, generosity, and connection than any institution in the room.</p>
+    <p>By the end of the night, something real has been started: campus mental health resources funded, a network activated, a Storylivingry Studio seeded. The show is the mechanism. The room is the medicine.</p>
+    <p>This is what it looks like when social impact entertainment actually works.</p>
+  </section>
+
   <!-- THE OPENING -->
   <section id="opening" class="reveal">
     <div class="opening-inner">
@@ -805,6 +856,7 @@
         <p>"Welcome to our performance."</p>
         <p>"Please take a moment to turn on your devices."</p>
       </div>
+      <p>One person walks out. No script. A real life story in his hands and a room full of strangers in front of him. What happens next depends entirely on who showed up tonight.</p>
       <p>Every screen in this room is a <em>doorway</em>. Every phone, a candle. Every face on every feed, another seat in a theater that just got <em>bigger than the building</em>.</p>
       <p>We came here for a show. What we are actually doing is <em>summoning a planetary family</em>, using the same technology that was used against us to <em>find each other instead</em>. To weave solutions ourselves. To prove that change doesn't trickle down from institutions; it rises up from rooms like this.</p>
       <p>The lights stay low. The screens stay lit. The world is watching itself remember that it has <em>always been one</em>.</p>
@@ -815,11 +867,12 @@
   <section class="reveal">
     <span class="section-mark"><span class="roman">II</span>What It Is</span>
     <h2>Community Co-creation, <em>Artivism</em> and Social Impact</h2>
-    <p>Live, real-time, emergent artivism. The host walks out alone. And immediately he isn't alone.</p>
+    <p>Live, emergent, unrepeatable. The host walks out alone. And immediately he isn't alone.</p>
+    <p>He's not working from a script. He has a life story, a real one with real weight, and it serves as the spine of the evening. But what actually happens depends on who's in the room tonight. A post hits the screen. He reads it out loud. The audience responds. Someone joins from Instagram Live: a stranger, suddenly part of the show. Social media feeds run live on the screens around the room. He's reading them, reading the audience, making decisions in real time about what this particular group of people needs right now. You can feel the choices being made. That's the aliveness of it. That's also the danger of it. No two nights are the same.</p>
     <p>Beautiful chaos and divine order, held in tension all night. Phones come on around a dark room, and the room realizes it's <em>lighting itself</em>. <em>One candle loses nothing by lighting another</em>, and a thousand candles make a cathedral out of any auditorium.</p>
-    <p>And then, sometimes, the lights drop. The screens quiet. One voice carries the room. The host sharing from the heart what he cares about, what hurts, what he's learning in real time. Anger lives here when it needs to. So does humor, tenderness, social commentary that cuts. <em>This is public healing made visible.</em> The artivist isn't performing wellness; he's going through his own journey while the room goes through its own beside him. We're transforming together, in front of each other.</p>
+    <p>And then, sometimes, the lights drop. The screens quiet. One voice carries the room. Anger lives here when it needs to. So does humor, tenderness, social commentary that cuts. This is public healing made visible: one person going through his own journey while the room goes through its own beside him. Transforming together, in front of each other.</p>
     <p>Not a fundraiser. Not a panel. Not a wellness night. <em>Something stranger and more alive than any of those, and more useful.</em></p>
-    <p>Closer to <em>Springsteen on Broadway</em> than a TED Talk. Closer to Chappelle's stand-up than a corporate keynote. Closer to a tent revival than a panel discussion. Spoken word, communion, comedy, confession, all braided into one evening, where the something larger is whoever is in the room tonight.</p>
+    <p>Closer to <em>Springsteen on Broadway</em> than a TED Talk. Closer to a tent revival than a panel discussion. Spoken word, communion, comedy, confession, all braided into one evening, where the something larger is whoever is in the room tonight.</p>
     <div class="pull">
       "I am not here to tell you a story.<br />I am here to <em>live my story</em> with you."
       <span class="pull-attribution">From the opening monologue</span>
@@ -837,9 +890,9 @@
         <span class="section-mark"><span class="roman">III</span>The Show Is A Medium</span>
         <h2>Theater as <em>portal</em>. Audience as <em>the medicine</em>.</h2>
         <p>Every show is a quest. We arrive on a campus with a question already on the table: <em>what does this campus, this town, this county, this state need most right now to build the infrastructure for mental health reformation?</em> And the show is the room going to work on it together.</p>
-        <p>Phones come on like candles. The host frames the night's quest. The room takes it up. Somewhere in the audience is a vacant building in the next county over. Somebody knows the owner. Somewhere is a legal mind who can draft the bylaw. Somewhere is a press contact at the local paper. Somewhere is a philanthropist who's been waiting to be invited. Somewhere is a connection to the legislator whose committee makes this real. Their phones go up on the big screen: the connection threads cast live, the audience watching the netweaving happen, friends being pulled into the threads as they form. Strangers becoming radical philanthropists in front of an audience that's also the cast.</p>
+        <p>Phones come on like candles. The host frames the night's quest. The room takes it up. He's conducting all of it, reading the room, reading the feeds, calling things forward. There's no stage manager for this. One person, a thousand signals, and whatever the room is willing to offer. Somewhere in the audience is a vacant building in the next county over. Somebody knows the owner. Somewhere is a legal mind who can draft the bylaw. Somewhere is a press contact at the local paper. Somewhere is a philanthropist who's been waiting to be invited. Somewhere is a connection to the legislator whose committee makes this real. Their phones go up on the big screen: the connection threads cast live, the audience watching the netweaving happen, friends being pulled into the threads as they form. Strangers becoming radical philanthropists in front of an audience that's also the cast.</p>
         <p>This is <em>collective intelligence and collective generosity</em>: the most adaptive, evolutionary mechanism humans have ever found for solving hard problems. Faster than any agency alone. Smarter than any committee alone. More generous than any institution alone. The room outperforms the system, every time, because the room <em>is</em> the system the way it was always supposed to work.</p>
-        <p>Every offer, every idea, every connection made tonight is logged into <a href="https://depsy.info/manifesto/" target="_blank" rel="noopener">DePsy</a>: the platform that holds the work, attributes the contributors, and lets the generosity compound across performances. <em>Provenance, not competition.</em> An economy built from what's freely given, that flows value, resources and impact between and among those who are creating it.</p>
+        <p>Every offer, every idea, every connection made tonight is logged into <a href="https://depsy.info/manifesto/" target="_blank" rel="noopener">DePsy</a>: the platform that gives every contribution a permanent record, attributes it to the person who gave it, and lets the generosity compound across every show that follows. What you offer tonight does not disappear when the lights come up. It becomes part of the infrastructure. <em>Provenance, not competition.</em> An economy built from what's freely given, that flows value, resources and impact between and among those who are creating it.</p>
         <p>The screens around the audience carry the rest of the moviement: voices, documentary footage, testimony pouring in from beyond the building. The network <em>is</em> the show, looking back at itself in real time.</p>
         <p>And every show feeds the next. The vacant building offered tonight becomes the example cited next month. The legal draft started here gets refined three states over. The work compounds the way mycelium feeds a forest, quietly, structurally, even when no one sees the seam.</p>
         <div class="pull">
@@ -856,7 +909,7 @@
     <h2>The form is a show. The <em>structure</em> is a ceremony.</h2>
     <p>Kinetic. Alive. Fun. Never churchy. Underneath, something older. Invocation. Witness. Offering. Communion. Sending. The same shape every ceremony has ever taken when humans needed to gather attention into a vessel that could carry something sacred.</p>
     <p>Disguised on purpose. Students don't need another church; they need a place that feels like a concert and works like a <em>ceremony</em>. Burning Man uses the same trick. Festival on the outside. Temple on the inside. The surface never tips its hand.</p>
-    <p>A UI can be a ritual interface. The Mass is a UI. The Twelve Steps are a UI. A campfire is a UI. Each one a shape humans built to gather attention so something could move through. The One Mind Show is what that shape looks like in 2026, with a phone in every hand and a network making the room <em>larger than the room</em>.</p>
+    <p>The shape is ancient. The technology is 2026. The result is something humans have always needed and rarely gotten: a room that actually works.</p>
   </section>
 
   <!-- WHERE IT BEGINS -->
@@ -871,6 +924,7 @@
         <p>Our dream is to begin at <em>Brookdale Community College</em>, in central New Jersey, in front of students who already speak fluent music, story, and screen, but rarely get invited to use those languages as instruments of healing.</p>
         <p>In the 1990s, the Free Tibet Festivals proved something quiet and powerful: <em>culture moves faster than policy</em>. Students, artists, organizers (a network nobody centralized) reshaped how the world saw an entire region. Not through institutions. Through music, story, identity, and participation.</p>
         <p>We're walking that same lineage into the defining mental health crisis of our generation. The first chapter will be one campus. The next will be another. Then another. <em>Each campus is not a branch. It's a chapter</em> in an unfolding story.</p>
+        <p>If you run a campus, or care about one, this is where the conversation starts.</p>
       </div>
     </div>
   </section>
@@ -896,7 +950,7 @@
           </div>
         </div>
 
-        <p>Every show is a funraiser for what stays after the lights go down. <em>The giving is the point.</em></p>
+        <p>Every show is a funraiser for what stays after the lights go down. <em>The giving is the point.</em> The show earns what the campus keeps.</p>
       </div>
       <div class="giveback-image">
         <img src="assets/filmanthropy-marquis.jpg" loading="lazy" alt="Filmanthropy: every show leaves something behind on the campus where it plays." class="section-image" />
@@ -908,7 +962,7 @@
   <section class="reveal">
     <span class="section-mark"><span class="roman">VII</span>Part of a Larger Story</span>
     <h2>One <em>room</em> inside a larger one.</h2>
-    <p>A One Mind Show is not the <em>full story</em>! It is one room inside a larger one: a Civil Rights Moviement for the Soul that lives across stage, screen, story, technology and more. The show is the part you can walk into and enjoy contributing to something that matters, taking <em>social impact entertainment</em> to new heights.</p>
+    <p>The show is one room inside a larger movement, a Civil Rights Moviement for the Soul unfolding across stage, screen, story, and technology. This is the part you can walk into. The part where something gets built.</p>
     <div class="ecosystem">
       <a href="https://storylivingrystudio.info" class="studio-mark" target="_blank" rel="noopener" aria-label="Storylivingry Studio: visit storylivingrystudio.info">
         <img src="assets/storylivingry-logo-transparent.png" alt="Storylivingry Studio" loading="lazy" />
