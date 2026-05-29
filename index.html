@@ -1005,6 +1005,44 @@
   .creator-name { font-family: var(--display); font-size: 1.5rem; color: var(--ink); margin-bottom: 0.3rem; }
   .creator-role { font-family: var(--display); font-style: italic; color: var(--gold); font-size: 0.95rem; margin-bottom: 1rem; }
   .creator-email { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: var(--ink-soft); opacity: 0.7; }
+  /* ===== Section background images (wired pass) ===== */
+  #beyond, #underneath { position: relative; overflow: hidden; }
+  #beyond > *:not(.section-bg):not(.section-bg-overlay),
+  #underneath > *:not(.section-bg):not(.section-bg-overlay) { position: relative; z-index: 2; }
+  .section-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background-size: cover; background-position: center;
+    opacity: 0.5;
+  }
+  .section-bg-overlay { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+  /* Center-dark radial: darkest where the centered copy sits */
+  .section-bg-overlay--center {
+    background: radial-gradient(ellipse at center,
+      rgba(10,7,5,0.86) 0%,
+      rgba(10,7,5,0.72) 45%,
+      rgba(10,7,5,0.55) 100%);
+  }
+  /* Top-to-bottom dark: protects a top headline band */
+  .section-bg-overlay--top {
+    background: linear-gradient(to bottom,
+      rgba(10,7,5,0.9) 0%,
+      rgba(10,7,5,0.7) 40%,
+      rgba(10,7,5,0.6) 100%);
+  }
+  /* Storyboard panels (Section IV) */
+  .storyboard-panel { margin: 0 0 0.4rem; }
+  .storyboard-caption {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--copper);
+    text-align: center;
+    margin: 0.4rem 0 1rem;
+    text-transform: uppercase;
+  }
+  /* Responsive video embed (Free Tibet clip) */
+  .video-embed { position: relative; width: 100%; aspect-ratio: 16 / 9; border: 1px solid var(--gold); padding: 3px; }
+  .video-embed iframe, .video-embed video { position: absolute; inset: 3px; width: calc(100% - 6px); height: calc(100% - 6px); }
 </style>
 </head>
 <body>
@@ -1077,12 +1115,10 @@
     <div class="scene-layout">
       <div class="scene-text">
         <p>The performer walks out and shares something real. Something from his own life. The kind of thing people usually keep private. The room shifts. Trust enters. And then the room begins to open.</p>
-        <p>Posts appear on the screens in real time. He reads one out loud. Recognition moves through the audience like a current. Phones come up. Someone in the third row connects to something posted in the back of the room. The connection thread forms on the big screen where two hundred people can see it: two strangers, suddenly inside the same problem, solving it together in public, in real time.</p>
+        <p>Posts appear on the screens in real time. He reads one out loud. Recognition moves through the audience like a current. Phones come up. Someone in the third row connects to something posted in the back of the room. The connection thread forms on the big screen where the audience can see it: two strangers, suddenly inside the same problem, solving it together in public, in real time.</p>
         <p class="scene-note">This is social networking. Not the way you do it alone on your phone. The way it was always supposed to work: visible, alive, in a room where everyone can feel it forming.</p>
       </div>
-      <div class="image-placeholder" style="aspect-ratio:auto; min-height:200px;">
-        <span>Image slot: the room opens<br />[ placeholder ]</span>
-      </div>
+      <img src="assets/scene-1-room-opens.png" alt="The room opens: a man on stage as the audience holds up phones like candles, glowing panels of faces around the walls, the first connection forming on the screen above the stage." loading="lazy" class="section-image" />
     </div>
 
     <!-- SCENE II -->
@@ -1094,9 +1130,7 @@
         <p>And then: a building becomes available. A legal mind surfaces. A philanthropist who has been waiting to be asked raises their hand. Someone flags a connection to the legislator whose committee makes this real. Direct support begins to flow toward the campus mental health resources that will still be there long after the lights go down.</p>
         <p class="scene-note">Kickstarter puts a campaign on your screen. GoFundMe puts an ask in your feed. This puts the room to work on the problem while the performer is still on stage. The crowd isn't donating. It's deciding.</p>
       </div>
-      <div class="image-placeholder" style="aspect-ratio:auto; min-height:180px;">
-        <span>Image slot: the room acts<br />[ placeholder ]</span>
-      </div>
+      <img src="assets/scene-2-room-acts.png" alt="The room acts: audience members standing and raising their hands, golden threads carrying offers across the room toward the stage, the crowd deciding together." loading="lazy" class="section-image" />
     </div>
 
     <!-- SCENE III -->
@@ -1117,7 +1151,8 @@
 
   <!-- BEYOND THE ROOM -->
   <section class="reveal sec-center" id="beyond">
-    <div class="bg-note">[ Full-bleed faded background image to be placed here later: Earth at night from orbit, city lights in amber and gold, thin threads of light connecting cities. Placeholder note only. ]</div>
+    <div class="section-bg" aria-hidden="true" style="background-image:url('assets/broadcast-radiating-theater-bg.png');"></div>
+    <div class="section-bg-overlay section-bg-overlay--center" aria-hidden="true"></div>
     <span class="section-mark"><span class="roman">III</span>Beyond the Room</span>
     <h2>The room holds whoever showed up. <em>The broadcast holds everyone else.</em></h2>
     <p>Every show streams live. Not as a recording. Not as an archive. As it happens, in real time, to anyone watching from anywhere.</p>
@@ -1133,7 +1168,18 @@
     <div class="medium-layout medium-layout--top">
       <div class="medium-image medium-image-stack">
         <img src="assets/the-room-sister.jpg" alt="The conductor's view from stage: audience holding lit phones, screens behind the audience mirroring the network back to itself." loading="lazy" class="section-image" />
-        <img src="assets/oms-panel-audience.png" alt="Storyboard panels of the live netweaving: phones lit like candles, connection threads cast on the big screen, offers logged into DePsy as the audience becomes the cast." loading="lazy" class="section-image" />
+        <figure class="storyboard-panel">
+          <img src="assets/section4-panel-1-offer.png" alt="An audience member holds up their phone, a vacant building taking shape in light beside them: the first offer." loading="lazy" class="section-image" />
+          <figcaption class="storyboard-caption">Someone offers a building.</figcaption>
+        </figure>
+        <figure class="storyboard-panel">
+          <img src="assets/section4-panel-2-connect.png" alt="Three audience members linked by golden threads across the dark room, a legal mind and a philanthropist surfacing as light: the network finds itself." loading="lazy" class="section-image" />
+          <figcaption class="storyboard-caption">A legal mind and a philanthropist connect.</figcaption>
+        </figure>
+        <figure class="storyboard-panel">
+          <img src="assets/section4-panel-3-result.png" alt="The whole room connected by a web of golden threads converging on the stage: many separate offers becoming one structure." loading="lazy" class="section-image" />
+          <figcaption class="storyboard-caption">The room builds something together.</figcaption>
+        </figure>
       </div>
       <div class="medium-text">
         <span class="section-mark"><span class="roman">IV</span>The Show Is A Medium</span>
@@ -1153,8 +1199,9 @@
   </section>
 
   <!-- WHAT'S UNDERNEATH -->
-  <section class="reveal sec-center">
-    <div class="bg-note">[ Full-bleed faded background image to be placed here later: candlelit interior, warm amber light, sacred and contemplative, no people. Placeholder note only. ]</div>
+  <section class="reveal sec-center" id="underneath">
+    <div class="section-bg" aria-hidden="true" style="background-image:url('assets/whats-underneath-bg.png');"></div>
+    <div class="section-bg-overlay section-bg-overlay--center" aria-hidden="true"></div>
     <span class="section-mark"><span class="roman">V</span>What's Underneath</span>
     <div class="playbill-box" style="max-width:640px; margin:0 auto;">
       <div class="playbill-box-inner" style="text-align:center;">
@@ -1200,19 +1247,12 @@
     <div class="medium-layout">
       <div class="medium-image">
         <img src="assets/nj-image-v2-matted.jpg" alt="New Jersey: the home ground for the show's grassroots start." loading="lazy" class="section-image" />
-        <div class="engagement-card">
-          <div class="engagement-card-inner">
-            <span class="label gold" style="margin-bottom:0.4rem;">First Engagement</span>
-            <div style="font-family:var(--display); font-style:italic; font-size:0.95rem; margin-bottom:0.3rem;">Brookdale Community College</div>
-            <span class="label copper">Central New Jersey</span>
-          </div>
+        <div class="video-embed" style="margin-top:0.8rem;">
+          <video controls preload="metadata">
+            <source src="assets/youtube-clip-freetibet.mp4" type="video/mp4" />
+          </video>
         </div>
-        <div class="image-placeholder" style="aspect-ratio:auto; min-height:140px; margin-top:0.8rem;">
-          <span>Image slot: Free Tibet festival<br />[ placeholder ]</span>
-        </div>
-        <div class="image-placeholder" style="aspect-ratio:auto; min-height:110px; margin-top:0.8rem;">
-          <span>Video slot: Free Tibet clip<br />[ embed placeholder ]</span>
-        </div>
+        <p class="storyboard-caption" style="margin-top:0.5rem;">Adam Yauch On Why He Helped Create The Free Tibet Music Festival</p>
       </div>
       <div class="medium-text">
         <span class="section-mark"><span class="roman">VI</span>Where It Begins</span>
@@ -1288,17 +1328,15 @@
   <span class="label copper" style="text-align:center; margin-bottom:2.5rem;">About The Creator</span>
   <div class="medium-layout">
     <div class="medium-image">
-      <div class="image-placeholder" style="aspect-ratio:4 / 5;">
-        <span>Photo of Bret Warshawsky<br />[ placeholder ]</span>
-      </div>
+      <img src="assets/bret-portrait.png" alt="Bret Warshawsky, creator of A One Mind Show, caught mid-thought in warm low light." loading="lazy" class="section-image" />
     </div>
     <div class="medium-text">
       <div class="creator-name">Bret Warshawsky</div>
       <div class="creator-role">Creator, A One Mind Show</div>
       <hr class="gold-rule" />
-      <p>[ Short bio, three to four sentences, to be written from the bio documents. Social systems reformer, documentary filmmaker, artivist, and the one standing alone on stage conducting all of this. Why this show, why now, why him. ]</p>
+      <p>Bret Warshawsky is a writer, speaker, futurist, and polymath working at the intersection of consciousness, story, systems change, and mental health reform. After thirty-plus years of living with perceived mental illness, thirteen-plus of them off psychiatric medication and still in the work, his perspective on what the system calls illness and what other traditions call spiritual emergence is earned from the inside. His body of work spans more than a decade of international systems-design and co-creation, including thirteen years building Symphonics with creative partner Andrea Harding, direct collaboration with the late futurist Barbara Marx Hubbard, and the co-creation of Synergy Hub 1.0 in Rotterdam, a sixteen-month gift-economy living experiment. Today he is the co-visionary behind the Mental Health Reformation in New Jersey with business partner Janet Werner, and the creator of A One Mind Show.</p>
       <div style="margin:1.5rem 0;">
-        <a href="#" class="pb-button">
+        <a href="why-me.html" class="pb-button">
           <div class="pb-button-inner">
             <span class="label">Why Me? &rarr;</span>
           </div>

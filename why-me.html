@@ -1,0 +1,1120 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>A One Mind Show: Why Me?</title>
+<meta name="description" content="A college campus theater grassroots production in service to mental health reformation. A Storylivingry Studio production." />
+<meta property="og:title" content="A One Mind Show" />
+<meta property="og:description" content="A Civil Rights Moviement for the Soul. Beginning on college campuses in New Jersey." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500;1,600&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0705;
+    --bg-deep: #08060406;
+    --ink: #F5F0E8;
+    --ink-soft: #D4C9B0;
+    --gold: #C4A055;
+    --gold-deep: #A8842F;
+    --ember: #C7421F;
+    --copper: #B5623E;
+    --panel: #0D0A06;
+    --curtain-1: #4A1212;
+    --curtain-2: #6B1B1B;
+    --curtain-3: #2D0808;
+    --display: 'Cormorant Garamond', Georgia, serif;
+    --body: 'Source Serif 4', Georgia, serif;
+    --mono: 'IBM Plex Mono', Consolas, monospace;
+    --rule: rgba(212, 166, 71, 0.18);
+    --border-radius-lg: 10px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--body);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.65;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection { background: var(--gold); color: var(--bg); }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 4rem 2rem;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 50% 110%, rgba(199, 66, 31, 0.08) 0%, transparent 55%),
+      radial-gradient(ellipse at 50% 0%, rgba(212, 166, 71, 0.04) 0%, transparent 50%),
+      var(--bg);
+    z-index: 0;
+  }
+
+  /* The stage proscenium frame */
+  .proscenium-top {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 90px;
+    background: linear-gradient(to bottom, #1A0A0A 0%, transparent 100%);
+    z-index: 4;
+    pointer-events: none;
+  }
+
+  /* The curtains */
+  .curtain {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 55%;
+    z-index: 3;
+    background:
+      repeating-linear-gradient(
+        90deg,
+        var(--curtain-3) 0px,
+        var(--curtain-1) 14px,
+        var(--curtain-2) 28px,
+        var(--curtain-1) 42px,
+        var(--curtain-3) 56px
+      );
+    box-shadow:
+      inset 0 -120px 200px rgba(0, 0, 0, 0.6),
+      inset 0 60px 100px rgba(0, 0, 0, 0.4);
+    animation: curtainOpen 2.6s cubic-bezier(0.5, 0.05, 0.3, 1) 0.6s forwards;
+  }
+
+  .curtain.left {
+    left: 0;
+    transform: translateX(0);
+    border-right: 2px solid #1F0606;
+  }
+
+  .curtain.right {
+    right: 0;
+    transform: translateX(0);
+    border-left: 2px solid #1F0606;
+  }
+
+  .curtain.left::after,
+  .curtain.right::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 32px;
+    background: linear-gradient(to right, transparent, rgba(0,0,0,0.55));
+  }
+
+  .curtain.left::after { right: 0; }
+  .curtain.right::after { left: 0; transform: scaleX(-1); }
+
+  @keyframes curtainOpen {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-105%); }
+  }
+
+  .curtain.right { animation-name: curtainOpenRight; }
+
+  @keyframes curtainOpenRight {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(105%); }
+  }
+
+  /* Hero content (behind the curtains, revealed as they part) */
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 760px;
+    opacity: 0;
+    animation: fadeUp 1.6s ease-out 1.8s forwards;
+  }
+
+  @keyframes fadeUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-mark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-title {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(3rem, 9vw, 6.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  .hero-rule {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 2rem auto 1.75rem;
+    opacity: 0.6;
+  }
+
+  .hero-subtitle {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.1rem, 2.4vw, 1.4rem);
+    color: var(--ink-soft);
+    letter-spacing: 0.01em;
+  }
+
+  .hero-dateline {
+    margin-top: 4rem;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.24em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+
+  .hero-dateline span {
+    color: var(--ember);
+  }
+
+  .hero-banner {
+    margin-top: 1.5rem;
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.32em;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* Scroll indicator */
+  .hero-logline {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--gold);
+    text-align: center;
+    max-width: 520px;
+    margin: 4.5rem auto 0;
+    line-height: 1.4;
+  }
+
+
+  /* Full-bleed image break */
+  .stage-reveal {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stage-reveal img {
+    display: block;
+    width: 100%;
+    height: auto;
+    opacity: 0;
+    animation: imageBreathe 2s ease-out 0.3s forwards;
+  }
+
+  @keyframes imageBreathe {
+    0% { opacity: 0; transform: scale(1.04); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  .stage-reveal::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to bottom,
+        rgba(14, 11, 8, 0.35) 0%,
+        transparent 12%,
+        transparent 88%,
+        rgba(14, 11, 8, 0.85) 100%);
+    pointer-events: none;
+  }
+
+  .stage-caption {
+    text-align: center;
+    padding: 0.5rem 2rem 1.5rem;
+    background: var(--bg);
+  }
+
+  .stage-caption .mark {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.28em;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+  }
+
+  .stage-caption .line {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+    color: var(--ink-soft);
+    margin: 1rem auto 0;
+    line-height: 1.5;
+  }
+
+  .stage-caption .line em {
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  .stage-caption .hashtag {
+    margin: 0 auto;
+    font-family: var(--mono);
+    font-size: 3.5rem;
+    letter-spacing: 0.06em;
+    color: var(--ember);
+    font-weight: 500;
+    text-align: center;
+  }
+
+  /* ---------- SECTIONS ---------- */
+  main {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 2rem 2.5rem 4rem;
+  }
+
+  section {
+    padding: 6rem 0;
+    position: relative;
+  }
+
+  section + section {
+    border-top: 1px solid var(--rule);
+  }
+
+  .section-mark {
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.28em;
+    color: var(--copper);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    display: block;
+  }
+
+  .section-mark .roman {
+    color: var(--copper);
+    margin-right: 1.2em;
+  }
+
+  h2 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.1;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    margin-bottom: 2rem;
+  }
+
+  h2 em {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  p {
+    margin-bottom: 1.5rem;
+    margin-left: 0;
+    margin-right: 0;
+    color: var(--ink);
+    max-width: 60ch;
+  }
+
+  p em {
+    font-style: italic;
+    color: var(--gold);
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 1.04em;
+  }
+
+  p strong {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* Pull quote */
+  .pull {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.25rem, 2.6vw, 1.6rem);
+    line-height: 1.35;
+    color: var(--gold);
+    text-align: center;
+    margin: 2rem auto;
+    max-width: 38ch;
+    padding: 1.25rem 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .pull-attribution {
+    display: block;
+    margin-top: 0.75rem;
+    font-family: var(--mono);
+    font-style: normal;
+    font-size: 10.5px;
+    letter-spacing: 0.24em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+  }
+
+  /* Section II visual treatments */
+  #one-night h2 { text-align: center; }
+
+  .lead-frame {
+    text-align: center;
+    max-width: 56ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .contrast-trio {
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    margin: 4rem auto;
+  }
+
+
+  /* Section II rebuilt closing elements */
+  .sec2-summary {
+    text-align: center;
+    font-size: 1.4em;
+    line-height: 1.7;
+    margin: 3rem auto;
+  }
+
+  .sec2-climax {
+    text-align: center;
+    font-size: 1.2em;
+    font-style: italic;
+    color: var(--gold);
+    line-height: 1.55;
+    margin: 3rem auto;
+    padding: 1.25rem 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .pull--solo {
+    border-top: none;
+  }
+
+  /* The opening: special treatment */
+  .opening-lines {
+    margin: 2.5rem 0 3rem;
+  }
+
+  .opening-lines p {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    line-height: 1.45;
+    color: var(--ink);
+    max-width: none;
+    margin-bottom: 0.5rem;
+  }
+
+  .opening-lines p:last-child {
+    margin-bottom: 0;
+    color: var(--gold);
+  }
+
+  /* Three-part frame */
+  .triad {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+    padding: 0;
+  }
+
+  .triad-item {
+    padding: 1.5rem 0 1.5rem 1.75rem;
+    border-left: 1px solid var(--rule);
+  }
+
+  .triad-mark {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.24em;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .triad-item h3 {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .triad-item p {
+    font-size: 16px;
+    color: var(--ink-soft);
+    margin-bottom: 0;
+    line-height: 1.55;
+  }
+
+  /* ---------- SECTION I: full-bleed networked-earth background ---------- */
+  #opening {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding: 6rem 0;
+    background-image: url('assets/networked-earth.jpg');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+  }
+
+  #opening::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(14, 11, 8, 1) 0%,
+      rgba(14, 11, 8, 0.65) 18%,
+      rgba(14, 11, 8, 0.65) 82%,
+      rgba(14, 11, 8, 1) 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .opening-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+  }
+
+  #opening .opening-inner > p {
+    font-size: 19.5px;
+    font-weight: 500;
+  }
+
+  #opening .opening-lines p {
+    font-weight: 500;
+  }
+
+  /* Section I: force all text to off-white because of warm-toned background image */
+  #opening .section-mark,
+  #opening .section-mark .roman,
+  #opening .opening-lines p:last-child,
+  #opening p em {
+    color: var(--ink);
+  }
+
+  /* Section I: center-align text to anchor visually to the symmetric earth background */
+  #opening {
+    text-align: center;
+  }
+
+  #opening p {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 60ch;
+  }
+
+  /* ---------- SECTION VI: Giveback two-column layout ---------- */
+  .giveback-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .giveback-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-lg);
+  }
+
+  @media (min-width: 720px) {
+    .giveback-layout {
+      grid-template-columns: 55% 40%;
+      column-gap: 5%;
+      align-items: center;
+    }
+  }
+
+  /* ---------- Two-column image-LEFT layout (used by Section III and Section V) ---------- */
+  .medium-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .image-placeholder {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    background: rgba(212, 166, 71, 0.04);
+    border: 1px solid var(--rule);
+    border-radius: var(--border-radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .image-placeholder span {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+  }
+
+  .section-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-lg);
+  }
+
+  @media (min-width: 720px) {
+    .medium-layout {
+      grid-template-columns: 40% 55%;
+      column-gap: 5%;
+      align-items: center;
+    }
+    .medium-layout.medium-layout--top {
+      align-items: start;
+    }
+  }
+
+  .medium-image-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  /* Dedication */
+  .dedication {
+    text-align: center;
+    padding: 7rem 2rem;
+    border-top: 1px solid var(--rule);
+    background:
+      radial-gradient(ellipse at 50% 50%, rgba(199, 66, 31, 0.05) 0%, transparent 65%);
+  }
+
+  .dedication-mark {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.28em;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  .dedication-text {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    line-height: 1.3;
+    color: var(--ink);
+    max-width: 22ch;
+    margin: 0 auto;
+  }
+
+  .dedication-text em {
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  /* Section VIII: Part of a Larger Story */
+  #ecosystem {
+    text-align: center;
+    padding: 7rem 2rem 5rem;
+    background: radial-gradient(ellipse at 50% 50%, rgba(212, 166, 71, 0.06) 0%, transparent 65%);
+  }
+
+  #ecosystem h2 {
+    font-size: clamp(2rem, 5vw, 3.8rem);
+    line-height: 1.1;
+    margin-bottom: 2rem;
+  }
+
+  #ecosystem > p {
+    max-width: 52ch;
+    margin: 0 auto 3.5rem;
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+
+  /* Link to studio */
+  .ecosystem {
+    text-align: center;
+    margin: 3rem 0 1rem;
+  }
+
+  .studio-mark {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    padding: 1rem;
+  }
+
+  .studio-mark img {
+    display: block;
+    width: 240px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .studio-mark-caption {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+  }
+
+  .studio-mark:hover {
+    opacity: 0.85;
+  }
+
+  .studio-mark:hover .studio-mark-caption {
+    color: var(--gold);
+    letter-spacing: 0.26em;
+  }
+
+  /* Footer */
+  footer {
+    padding: 4rem 2rem 3rem;
+    text-align: center;
+    border-top: 1px solid var(--rule);
+  }
+
+  .footer-mark {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+    margin-bottom: 0.4rem;
+  }
+
+  .footer-tagline {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    color: rgba(212, 166, 71, 0.6);
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+  }
+
+  .footer-meta {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    line-height: 2;
+    opacity: 0.7;
+  }
+
+  .footer-meta a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(199, 188, 168, 0.3);
+  }
+
+  .footer-meta a:hover {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+
+  p a {
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(212, 166, 71, 0.4);
+    transition: border-bottom-color 0.2s ease;
+  }
+
+  p a:hover {
+    border-bottom-color: var(--gold);
+  }
+
+  /* Reveal on scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* What This Is: centered intro section */
+  .what-this-is {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2rem 2rem 5rem;
+  }
+
+  .what-this-is h2 {
+    font-family: var(--display);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  .what-this-is p {
+    max-width: 58ch;
+    margin: 0 auto 1.2rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    main { padding: 4rem 1.5rem 3rem; }
+    section { padding: 3.5rem 0; }
+    .pull { padding: 1.5rem 0; margin: 2rem auto; }
+    .dedication { padding: 5rem 1.5rem; }
+    .hero { padding: 3rem 1.5rem; }
+    .hero-dateline {
+      margin-top: 3rem;
+      font-size: 9.5px;
+      letter-spacing: 0.18em;
+      line-height: 1.8;
+    }
+    .triad-item { padding-left: 1.25rem; }
+  }
+
+  /* Reduce motion */
+  @media (prefers-reduced-motion: reduce) {
+    .curtain {
+      animation: none;
+      transform: translateX(-105%);
+    }
+    .curtain.right {
+      transform: translateX(105%);
+    }
+    .hero-content,
+    .reveal {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  /* ================================================== */
+  /* PLAYBILL COMPONENTS (full playbill redesign)        */
+  /* ================================================== */
+
+  .gold { color: var(--gold); }
+  .copper { color: var(--copper); }
+
+  .label {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    display: block;
+  }
+
+  .gold-rule {
+    border: none;
+    border-top: 1px solid var(--gold);
+    margin: 1.2rem 0;
+    opacity: 0.85;
+  }
+
+  .playbill-box {
+    border: 1px solid var(--gold);
+    padding: 3px;
+  }
+
+  .playbill-box-inner {
+    border: 1px solid var(--gold);
+    padding: 2.5rem 2rem;
+  }
+
+  .playbill-header { text-align: center; }
+
+  .playbill-header h2 { text-align: center; margin: 0; }
+
+  .playbill-header .lead-frame { margin: 1.2rem auto; }
+
+  .contrast-line {
+    color: var(--gold);
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    margin: 0.35rem auto;
+    max-width: none;
+  }
+
+  .scene-label { color: var(--copper); margin-bottom: 0.3rem; }
+
+  .scene-title {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+  }
+
+  .scene-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin: 1rem 0 2rem;
+    align-items: start;
+  }
+
+  @media (min-width: 720px) {
+    .scene-layout { grid-template-columns: 1.3fr 0.7fr; }
+  }
+
+  .scene-layout .scene-text p { max-width: none; }
+
+  .scene-note {
+    font-family: var(--display);
+    font-style: italic;
+    color: var(--gold);
+    max-width: none;
+  }
+
+  .scene-conductor {
+    background: var(--panel);
+    border: 1px solid rgba(196, 160, 85, 0.12);
+    padding: 2.5rem 2rem;
+    margin: 1rem 0 2rem;
+  }
+
+  .scene-conductor p { max-width: none; }
+
+  .bg-note {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.04em;
+    color: rgba(196, 160, 85, 0.28);
+    text-align: center;
+    line-height: 1.7;
+    max-width: 520px;
+    margin: 0 auto 2rem;
+    text-transform: none;
+  }
+
+  .sec-center { text-align: center; }
+  .sec-center p { margin-left: auto; margin-right: auto; max-width: 62ch; }
+  .sec-center h2 { text-align: center; }
+
+  .dev-panel { opacity: 0.55; }
+  .dev-panel .playbill-box-inner { text-align: center; }
+  .dev-panel p { margin-left: auto; margin-right: auto; }
+
+  .origin-callout {
+    border: 1px solid rgba(196, 160, 85, 0.18);
+    background: var(--panel);
+    border-left: 2px solid var(--gold);
+    padding: 1.3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .origin-callout p { margin: 0; max-width: none; font-size: 15px; color: var(--ink-soft); }
+
+  .engagement-card { border: 1px solid var(--gold); padding: 3px; margin-top: 0.8rem; }
+  .engagement-card-inner { background: var(--panel); padding: 1.2rem; text-align: center; }
+
+  .pb-button { border: 1px solid var(--gold); display: inline-block; padding: 3px; text-decoration: none; }
+  .pb-button-inner { border: 1px solid var(--gold); padding: 0.55rem 1.6rem; }
+  .pb-button .label { color: var(--gold); }
+
+  .image-placeholder {
+    border: 1px solid rgba(196, 160, 85, 0.2);
+    background: var(--panel);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem;
+    color: rgba(196, 160, 85, 0.35);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .creator-name { font-family: var(--display); font-size: 1.5rem; color: var(--ink); margin-bottom: 0.3rem; }
+  .creator-role { font-family: var(--display); font-style: italic; color: var(--gold); font-size: 0.95rem; margin-bottom: 1rem; }
+  .creator-email { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: var(--ink-soft); opacity: 0.7; }
+  /* ===== Section background images (wired pass) ===== */
+  #beyond, #underneath { position: relative; overflow: hidden; }
+  #beyond > *:not(.section-bg):not(.section-bg-overlay),
+  #underneath > *:not(.section-bg):not(.section-bg-overlay) { position: relative; z-index: 2; }
+  .section-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background-size: cover; background-position: center;
+    opacity: 0.5;
+  }
+  .section-bg-overlay { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+  /* Center-dark radial: darkest where the centered copy sits */
+  .section-bg-overlay--center {
+    background: radial-gradient(ellipse at center,
+      rgba(10,7,5,0.86) 0%,
+      rgba(10,7,5,0.72) 45%,
+      rgba(10,7,5,0.55) 100%);
+  }
+  /* Top-to-bottom dark: protects a top headline band */
+  .section-bg-overlay--top {
+    background: linear-gradient(to bottom,
+      rgba(10,7,5,0.9) 0%,
+      rgba(10,7,5,0.7) 40%,
+      rgba(10,7,5,0.6) 100%);
+  }
+  /* Storyboard panels (Section IV) */
+  .storyboard-panel { margin: 0 0 0.4rem; }
+  .storyboard-caption {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--copper);
+    text-align: center;
+    margin: 0.4rem 0 1rem;
+    text-transform: uppercase;
+  }
+  /* Responsive video embed (Free Tibet clip) */
+  .video-embed { position: relative; width: 100%; aspect-ratio: 16 / 9; border: 1px solid var(--gold); padding: 3px; }
+  .video-embed iframe, .video-embed video { position: absolute; inset: 3px; width: calc(100% - 6px); height: calc(100% - 6px); }
+</style>
+</head>
+<body>
+
+<main style="background:var(--bg); min-height:100vh;">
+  <section class="reveal" style="max-width:760px; margin:0 auto; padding:6rem 2rem;">
+
+    <span class="label copper" style="margin-bottom:1.5rem;">About The Creator</span>
+    <h1 style="font-family:var(--display); font-weight:normal; font-size:2.4rem; margin:0 0 0.4rem;">Why Me?</h1>
+    <div class="creator-role" style="margin-bottom:1.5rem;">Bret Warshawsky, Creator of A One Mind Show</div>
+    <hr class="gold-rule" />
+
+    <p>I was nineteen the first time a room decided what was happening to me without asking me.</p>
+
+    <p>It was December 1994. What I was living through felt like an opening: a flood of meaning, connection, a sense of something vast and intelligent and loving. Months earlier, unknown to me and to the people treating me, the DSM had quietly added a category called "Religious or Spiritual Problem." Nobody in that hospital knew it existed. So the experience got the only name the room had vocabulary for. They called it psychosis. And that one word turned an emergence into an emergency.</p>
+
+    <p>What followed was a decade I would not wish on anyone: six hospitalizations, forced medication, labels I did not earn, predictions about my life that turned out to be wrong. I have now lived with perceived mental illness for more than thirty years, thirteen-plus of them off psychiatric medication, and I am still in the work. I do not say that as a finish line. I say it because the thing the system treats as a defect to be managed, I have come to understand from the inside as something closer to an initiation that nobody knew how to hold.</p>
+
+    <p>When the system could not give me a story I could live inside, I went looking for one. That search did not stay in one place, because the thing I was trying to understand did not belong to one discipline. So I became a generalist out of necessity, then out of love.</p>
+
+    <p>I went looking through consciousness studies and futurism. I worked directly with the late Barbara Marx Hubbard from 2014 until her passing in 2019, carrying forward her Seven S's of Co-creation, and her reprint of Conscious Evolution cites my Noomap project. I trained as an alumnus of the Buckminster Fuller-inspired Design Science Studio. I read myself into the lineage I now work in: Fuller and Hubbard and Joseph Campbell, Joseph Voros and the Clarke-Dator Boundary that taught me to take the preposterous seriously, Bernardo Kastrup on the primacy of mind, Michael Levin on the intelligence of living systems, Brian Eno's idea of scenius, the genius of a scene rather than a lone hero.</p>
+
+    <p>I went looking through systems and co-creation. I spent thirteen years building Symphonics with my creative partner Andrea Harding, international work in systems-design across several continents. I co-created Synergy Hub 1.0 in Rotterdam, a sixteen-month experiment in gift-economy living and co-creative governance, housed in a gifted floor of an eleven-thousand-square-meter building and run with the Meesteren Foundation and United Earth.</p>
+
+    <p>I went looking through technology. For roughly seven years I was embedded in consciousness-tech and Web3, working with Nicolas Luck of Perspect3vism and Coasys, a former Holochain core developer and the inventor of AD4M, on the hard problem of how distributed systems can hold meaning, not just data. I served as Head of Synergworks at Realization Labs. None of it was tech for its own sake. It was always the same question: how do you build infrastructure that lets people find each other and create together without a middleman owning the result.</p>
+
+    <p>And I went looking through story and philanthropy, because I came to believe those were the same search. I contributed a chapter to Lisa Nichols's bestseller Unbreakable Spirit. I have published more than three hundred essays at The Syntony Times. Sixteen years ago, after the 2008 collapse, I spent two years writing a screenplay and then wrote a strategic document I called Project Venture Philanthropy, articulating the integration of art, film, business, philanthropy, and spirituality that I am only now operationalizing. The walk is not theoretical. It has been on paper for sixteen years.</p>
+
+    <p>Here is what took me most of my life to see: none of these were separate careers. They were one search wearing different clothes. I am a neo-generalist, and what looked from the outside like scattering was actually a single instrument being tuned across every register it would eventually need to play.</p>
+
+    <p class="gold" style="font-style:italic;">Because here is the truth I keep coming back to: I would have given anything, at twenty, to have someone like me in the room.</p>
+
+    <p>A One Mind Show is the first thing I have ever built that uses all of it at once. The consciousness work and the systems-design and the technology and the story and the philanthropy, in one room, on one night, doing something none of them could do alone. It is theater and it is a live social network and it is a funraiser and it is collective intelligence going to work on a real problem, and it feels like none of those things while it is happening. Under the banner of Storylivingry, my transmedium production vision, it sits alongside the work I am leading now: the Mental Health Reformation in New Jersey with my business partner Janet Werner, where I am developing the AWARE App to help first responders recognize spiritually informed experiences in moments of crisis, and Social Effects, where I am building Filmanthropy, the practice of making philanthropy a designed-in outcome of the creative process itself, not a side effect, not an afterthought.</p>
+
+    <hr class="gold-rule" />
+
+    <p class="gold" style="font-style:italic;">That is why me. Not because I have answers. Because I have spent thirty years becoming the kind of person who could build this room, and I came back to build the one I needed at nineteen.</p>
+
+    <div style="margin-top:2.5rem;">
+      <a href="index.html" class="pb-button">
+        <div class="pb-button-inner">
+          <span class="label">&larr; Back to the show</span>
+        </div>
+      </a>
+    </div>
+
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-mark"><em>Storylivingry</em></div>
+  <div class="footer-tagline">Making a Livingry</div>
+  <div class="footer-meta">
+    A Storylivingry Studio Production<br />
+    <a href="mailto:bret@bretwarshawsky.com">bret@bretwarshawsky.com</a>
+  </div>
+</footer>
+
+<script>
+  // Reveal-on-scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
