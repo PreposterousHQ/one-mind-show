@@ -13,13 +13,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500;1,600&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0E0B08;
+    --bg: #0A0705;
     --bg-deep: #08060406;
-    --ink: #EDE5D6;
-    --ink-soft: #C7BCA8;
-    --gold: #D4A647;
+    --ink: #F5F0E8;
+    --ink-soft: #D4C9B0;
+    --gold: #C4A055;
     --gold-deep: #A8842F;
     --ember: #C7421F;
+    --copper: #B5623E;
+    --panel: #0D0A06;
     --curtain-1: #4A1212;
     --curtain-2: #6B1B1B;
     --curtain-3: #2D0808;
@@ -225,12 +227,12 @@
   .hero-logline {
     font-family: var(--display);
     font-style: italic;
-    font-size: 1.15rem;
+    font-size: 1.3rem;
     font-weight: 500;
     color: var(--gold);
     text-align: center;
-    max-width: 480px;
-    margin: 3rem auto 0;
+    max-width: 520px;
+    margin: 4.5rem auto 0;
     line-height: 1.4;
   }
 
@@ -329,14 +331,14 @@
     font-family: var(--mono);
     font-size: 13px;
     letter-spacing: 0.28em;
-    color: var(--gold-deep);
+    color: var(--copper);
     text-transform: uppercase;
     margin-bottom: 2rem;
     display: block;
   }
 
   .section-mark .roman {
-    color: var(--ember);
+    color: var(--copper);
     margin-right: 1.2em;
   }
 
@@ -859,6 +861,150 @@
       transform: none;
     }
   }
+  /* ================================================== */
+  /* PLAYBILL COMPONENTS (full playbill redesign)        */
+  /* ================================================== */
+
+  .gold { color: var(--gold); }
+  .copper { color: var(--copper); }
+
+  .label {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    display: block;
+  }
+
+  .gold-rule {
+    border: none;
+    border-top: 1px solid var(--gold);
+    margin: 1.2rem 0;
+    opacity: 0.85;
+  }
+
+  .playbill-box {
+    border: 1px solid var(--gold);
+    padding: 3px;
+  }
+
+  .playbill-box-inner {
+    border: 1px solid var(--gold);
+    padding: 2.5rem 2rem;
+  }
+
+  .playbill-header { text-align: center; }
+
+  .playbill-header h2 { text-align: center; margin: 0; }
+
+  .playbill-header .lead-frame { margin: 1.2rem auto; }
+
+  .contrast-line {
+    color: var(--gold);
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    margin: 0.35rem auto;
+    max-width: none;
+  }
+
+  .scene-label { color: var(--copper); margin-bottom: 0.3rem; }
+
+  .scene-title {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+  }
+
+  .scene-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin: 1rem 0 2rem;
+    align-items: start;
+  }
+
+  @media (min-width: 720px) {
+    .scene-layout { grid-template-columns: 1.3fr 0.7fr; }
+  }
+
+  .scene-layout .scene-text p { max-width: none; }
+
+  .scene-note {
+    font-family: var(--display);
+    font-style: italic;
+    color: var(--gold);
+    max-width: none;
+  }
+
+  .scene-conductor {
+    background: var(--panel);
+    border: 1px solid rgba(196, 160, 85, 0.12);
+    padding: 2.5rem 2rem;
+    margin: 1rem 0 2rem;
+  }
+
+  .scene-conductor p { max-width: none; }
+
+  .bg-note {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.04em;
+    color: rgba(196, 160, 85, 0.28);
+    text-align: center;
+    line-height: 1.7;
+    max-width: 520px;
+    margin: 0 auto 2rem;
+    text-transform: none;
+  }
+
+  .sec-center { text-align: center; }
+  .sec-center p { margin-left: auto; margin-right: auto; max-width: 62ch; }
+  .sec-center h2 { text-align: center; }
+
+  .dev-panel { opacity: 0.55; }
+  .dev-panel .playbill-box-inner { text-align: center; }
+  .dev-panel p { margin-left: auto; margin-right: auto; }
+
+  .origin-callout {
+    border: 1px solid rgba(196, 160, 85, 0.18);
+    background: var(--panel);
+    border-left: 2px solid var(--gold);
+    padding: 1.3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .origin-callout p { margin: 0; max-width: none; font-size: 15px; color: var(--ink-soft); }
+
+  .engagement-card { border: 1px solid var(--gold); padding: 3px; margin-top: 0.8rem; }
+  .engagement-card-inner { background: var(--panel); padding: 1.2rem; text-align: center; }
+
+  .pb-button { border: 1px solid var(--gold); display: inline-block; padding: 3px; text-decoration: none; }
+  .pb-button-inner { border: 1px solid var(--gold); padding: 0.55rem 1.6rem; }
+  .pb-button .label { color: var(--gold); }
+
+  .image-placeholder {
+    border: 1px solid rgba(196, 160, 85, 0.2);
+    background: var(--panel);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem;
+    color: rgba(196, 160, 85, 0.35);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .creator-name { font-family: var(--display); font-size: 1.5rem; color: var(--ink); margin-bottom: 0.3rem; }
+  .creator-role { font-family: var(--display); font-style: italic; color: var(--gold); font-size: 0.95rem; margin-bottom: 1rem; }
+  .creator-email { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: var(--ink-soft); opacity: 0.7; }
 </style>
 </head>
 <body>
@@ -908,21 +1054,59 @@
 
   <!-- WHAT IT IS -->
   <section id="one-night" class="reveal">
-    <span class="section-mark"><span class="roman">II</span>One Night</span>
-    <h2>Live. Emergent. Unrepeatable.</h2>
-    <p class="lead-frame">The only live event that is simultaneously a solo show, a social network, a fundraiser, and crowd creation. And feels like none of those things.</p>
-    <p class="contrast-trio">Most fundraisers ask you to give.<br />Most shows ask you to watch.<br />Most social networks ask you to scroll.</p>
-    <p class="lead-frame">This asks you to show up, and then does something with everything you brought.</p>
-    <p class="lead-frame">Here's what actually happens in the room.</p>
-    <p>The performer walks out and shares something real. Something from his own life. The kind of thing people usually keep private. The room shifts. Trust enters. And then the room begins to open.</p>
-    <p>Posts appear on the screens in real time. He reads one out loud. Recognition moves through the audience like a current. Phones come up. Someone in the third row connects to something posted in the back of the room. The connection thread forms on the big screen where two hundred people can see it: two strangers, suddenly inside the same problem, solving it together in public, in real time.</p>
-    <p>This is social networking. Not the way you do it alone on your phone. The way it was always supposed to work: visible, alive, in a room where everyone can feel it forming.</p>
-    <p>And then: a building becomes available. A legal mind surfaces. A philanthropist who has been waiting to be asked raises their hand. Someone flags a connection to the legislator whose committee makes this real. Direct support begins to flow toward the campus mental health resources that will still be there long after the lights go down.</p>
-    <p>Kickstarter puts a campaign on your screen. GoFundMe puts an ask in your feed. This puts the room to work on the problem while the performer is still on stage. The crowd isn't donating. It's deciding.</p>
-    <p>And through all of it, the performer is still on stage. Still improvising. Reading the room, reading the feeds, making real-time decisions about what this particular group of people needs right now. Going deeper into his story when the room is ready. Pulling back into humor when it needs to breathe. Bringing someone in from Instagram Live when the moment calls for it. Conducting an orchestra that did not know it was one until he walked out.</p>
-    <p>This is not a performance delivered at an audience. It is a live conversation with one. Anyone in the room can be called to the stage. Voices come back from the seats. The room is never just watching. It is always, also, responding.</p>
-    <p>Not a fundraiser. Not a panel. Not a wellness night. <em>Something stranger and more alive than any of those, and more useful.</em></p>
-    <p>Closer to <em>Springsteen on Broadway</em> than a TED Talk. Closer to a tent revival than a panel discussion. Spoken word, communion, comedy, confession, all braided into one evening, where the something larger is whoever showed up tonight.</p>
+    <span class="section-mark"><span class="roman">II</span>In The Room</span>
+    <div class="playbill-box" style="margin-bottom:3rem;">
+      <div class="playbill-box-inner playbill-header">
+        <span class="label gold" style="margin-bottom:1rem;">An Evening With</span>
+        <hr class="gold-rule" />
+        <h2>Live. Emergent. Unrepeatable.</h2>
+        <hr class="gold-rule" />
+        <p class="lead-frame">The only live event that is simultaneously a solo show, a social network, a fundraiser, and crowd creation. And feels like none of those things.</p>
+        <p class="contrast-line">Most fundraisers ask you to give.</p>
+        <p class="contrast-line">Most shows ask you to watch.</p>
+        <p class="contrast-line">Most social networks ask you to scroll.</p>
+        <hr class="gold-rule" />
+        <p class="lead-frame" style="font-style:italic;">This asks you to show up, and then does something with everything you brought.</p>
+        <span class="label copper">Here's what actually happens in the room</span>
+      </div>
+    </div>
+    <!-- SCENE I -->
+    <hr class="gold-rule" />
+    <span class="label scene-label">Scene I</span>
+    <div class="scene-title">The Room Opens</div>
+    <div class="scene-layout">
+      <div class="scene-text">
+        <p>The performer walks out and shares something real. Something from his own life. The kind of thing people usually keep private. The room shifts. Trust enters. And then the room begins to open.</p>
+        <p>Posts appear on the screens in real time. He reads one out loud. Recognition moves through the audience like a current. Phones come up. Someone in the third row connects to something posted in the back of the room. The connection thread forms on the big screen where two hundred people can see it: two strangers, suddenly inside the same problem, solving it together in public, in real time.</p>
+        <p class="scene-note">This is social networking. Not the way you do it alone on your phone. The way it was always supposed to work: visible, alive, in a room where everyone can feel it forming.</p>
+      </div>
+      <div class="image-placeholder" style="aspect-ratio:auto; min-height:200px;">
+        <span>Image slot: the room opens<br />[ placeholder ]</span>
+      </div>
+    </div>
+
+    <!-- SCENE II -->
+    <hr class="gold-rule" />
+    <span class="label scene-label">Scene II</span>
+    <div class="scene-title">The Room Acts</div>
+    <div class="scene-layout">
+      <div class="scene-text">
+        <p>And then: a building becomes available. A legal mind surfaces. A philanthropist who has been waiting to be asked raises their hand. Someone flags a connection to the legislator whose committee makes this real. Direct support begins to flow toward the campus mental health resources that will still be there long after the lights go down.</p>
+        <p class="scene-note">Kickstarter puts a campaign on your screen. GoFundMe puts an ask in your feed. This puts the room to work on the problem while the performer is still on stage. The crowd isn't donating. It's deciding.</p>
+      </div>
+      <div class="image-placeholder" style="aspect-ratio:auto; min-height:180px;">
+        <span>Image slot: the room acts<br />[ placeholder ]</span>
+      </div>
+    </div>
+
+    <!-- SCENE III -->
+    <hr class="gold-rule" />
+    <span class="label scene-label">Scene III</span>
+    <div class="scene-title">The Conductor</div>
+    <div class="scene-conductor">
+      <p>And through all of it, the performer is still on stage. Still improvising. Reading the room, reading the feeds, making real-time decisions about what this particular group of people needs right now. Going deeper into his story when the room is ready. Pulling back into humor when it needs to breathe. Bringing someone in from Instagram Live when the moment calls for it. Conducting an orchestra that did not know it was one until he walked out.</p>
+      <p>This is not a performance delivered at an audience. It is a live conversation with one. Anyone in the room can be called to the stage. Voices come back from the seats. The room is never just watching. It is always, also, responding.</p>
+    </div>
     <p class="sec2-summary">One man's life story.<br />The room's dormant resources.<br />The world's real-time attention.<br />All of it, activated, in one night.</p>
     <div class="sec2-climax">The show does not describe what community is capable of.<br />It is community being capable of it.<br />In front of you.<br />Right now.</div>
     <div class="pull pull--solo">
@@ -932,9 +1116,10 @@
   </section>
 
   <!-- BEYOND THE ROOM -->
-  <section class="reveal">
+  <section class="reveal sec-center" id="beyond">
+    <div class="bg-note">[ Full-bleed faded background image to be placed here later: Earth at night from orbit, city lights in amber and gold, thin threads of light connecting cities. Placeholder note only. ]</div>
     <span class="section-mark"><span class="roman">III</span>Beyond the Room</span>
-    <h2>The room holds two hundred people. <em>The broadcast holds everyone else.</em></h2>
+    <h2>The room holds whoever showed up. <em>The broadcast holds everyone else.</em></h2>
     <p>Every show streams live. Not as a recording. Not as an archive. As it happens, in real time, to anyone watching from anywhere.</p>
     <p>The student who couldn't get a ticket watches from her dorm and tags her professor. The philanthropist in Sacramento stumbles across the stream and sees the vacant building being offered in the room. The journalist in Chicago watches the crowd decide something together and starts writing before the lights come up. The influencer with two million followers shares a clip at midnight. By morning, the network is larger than anyone in the room could have made it alone.</p>
     <p>This is the exponential layer. The room is the ignition. The broadcast is the explosion.</p>
@@ -968,12 +1153,46 @@
   </section>
 
   <!-- WHAT'S UNDERNEATH -->
-  <section class="reveal">
+  <section class="reveal sec-center">
+    <div class="bg-note">[ Full-bleed faded background image to be placed here later: candlelit interior, warm amber light, sacred and contemplative, no people. Placeholder note only. ]</div>
     <span class="section-mark"><span class="roman">V</span>What's Underneath</span>
-    <h2>The form is a show. The <em>structure</em> is a ceremony.</h2>
-    <p>Kinetic. Alive. Fun. Never churchy. Underneath, something older. Invocation. Witness. Offering. Communion. Sending. The same shape every ceremony has ever taken when humans needed to gather attention into a vessel that could carry something sacred.</p>
-    <p>Disguised on purpose. Students don't need another church; they need a place that feels like a concert and works like a <em>ceremony</em>. Burning Man uses the same trick. Festival on the outside. Temple on the inside. The surface never tips its hand.</p>
-    <p>The shape is ancient. The technology is 2026. The result is something humans have always needed and rarely gotten: a room that actually works.</p>
+    <div class="playbill-box" style="max-width:640px; margin:0 auto;">
+      <div class="playbill-box-inner" style="text-align:center;">
+        <h2 style="text-align:center;">The form is a show. The <em>structure</em> is a ceremony.</h2>
+        <hr class="gold-rule" />
+        <p>Kinetic. Alive. Fun. Never churchy. Underneath, something older. Invocation. Witness. Offering. Communion. Sending. The same shape every ceremony has ever taken when humans needed to gather attention into a vessel that could carry something sacred.</p>
+        <p>Disguised on purpose. Students don't need another church; they need a place that feels like a concert and works like a <em>ceremony</em>. Burning Man uses the same trick. Festival on the outside. Temple on the inside. The surface never tips its hand.</p>
+        <hr class="gold-rule" />
+        <p style="font-style:italic; color:var(--ink);">The shape is ancient. The technology is 2026. The result is something humans have always needed and rarely gotten: a room that actually works.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TASTE OF WONDERLAND (in development) -->
+  <section class="reveal dev-panel">
+    <div class="playbill-box">
+      <div class="playbill-box-inner">
+        <span class="label gold" style="margin-bottom:0.8rem;">Coming To This Campus</span>
+        <hr class="gold-rule" />
+        <h2 style="text-align:center;">Taste of Wonderland</h2>
+        <p style="font-style:italic; max-width:60ch;">A structured community process. Faculty, students, families, friends, and local entrepreneurs, brought together as part of every campus residency. More details coming.</p>
+        <span class="label copper">Section in development</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- UNBREAKABLE SPIRIT DOCUSERIES (in development) -->
+  <section class="reveal dev-panel">
+    <div class="playbill-box">
+      <div class="playbill-box-inner">
+        <span class="label gold" style="margin-bottom:0.8rem;">Now Filming</span>
+        <hr class="gold-rule" />
+        <h2 style="text-align:center;"><em>Unbreakable Spirit</em></h2>
+        <span class="label copper" style="margin-bottom:0.8rem;">The Docuseries</span>
+        <p style="font-style:italic; max-width:60ch;">Every campus is a chapter. Every residency, a new episode in an unfolding documentary about what happens when a room decides to change things. The show is being filmed as it grows.</p>
+        <span class="label copper">Section in development</span>
+      </div>
+    </div>
   </section>
 
   <!-- WHERE IT BEGINS -->
@@ -981,10 +1200,28 @@
     <div class="medium-layout">
       <div class="medium-image">
         <img src="assets/nj-image-v2-matted.jpg" alt="New Jersey: the home ground for the show's grassroots start." loading="lazy" class="section-image" />
+        <div class="engagement-card">
+          <div class="engagement-card-inner">
+            <span class="label gold" style="margin-bottom:0.4rem;">First Engagement</span>
+            <div style="font-family:var(--display); font-style:italic; font-size:0.95rem; margin-bottom:0.3rem;">Brookdale Community College</div>
+            <span class="label copper">Central New Jersey</span>
+          </div>
+        </div>
+        <div class="image-placeholder" style="aspect-ratio:auto; min-height:140px; margin-top:0.8rem;">
+          <span>Image slot: Free Tibet festival<br />[ placeholder ]</span>
+        </div>
+        <div class="image-placeholder" style="aspect-ratio:auto; min-height:110px; margin-top:0.8rem;">
+          <span>Video slot: Free Tibet clip<br />[ embed placeholder ]</span>
+        </div>
       </div>
       <div class="medium-text">
         <span class="section-mark"><span class="roman">VI</span>Where It Begins</span>
         <h2>A grassroots start, <em>campus by campus</em>.</h2>
+        <hr class="gold-rule" />
+        <div class="origin-callout">
+          <span class="label gold" style="margin-bottom:0.6rem;">The Origin Home</span>
+          <p>Brookdale Community College is not just the first campus. It is the home base: where the show is built, refined, and incubated. Where we return between tours. Where the residency model is proven and the template is set for every campus that follows. For a campus that wants not just to host but to co-create, this is what that looks like.</p>
+        </div>
         <p>Our dream is to begin at <em>Brookdale Community College</em>, in central New Jersey, in front of students who already speak fluent music, story, and screen, but rarely get invited to use those languages as instruments of healing.</p>
         <p>In the 1990s, the Free Tibet Festivals proved something quiet and powerful: <em>culture moves faster than policy</em>. Students, artists, organizers (a network nobody centralized) reshaped how the world saw an entire region. Not through institutions. Through music, story, identity, and participation.</p>
         <p>We're walking that same lineage into the defining mental health crisis of our generation. The first chapter will be one campus. The next will be another. Then another. <em>Each campus is not a branch. It's a chapter</em> in an unfolding story.</p>
@@ -1014,6 +1251,9 @@
           </div>
         </div>
 
+        <p>What stays on campus is supported by a portion of ticket sales, merchandise, and docuseries revenue, divided across every campus in the tour. Not fully funded overnight. Supported, and growing with every show.</p>
+        <p>But the show doesn't only generate money. It generates the connections, expertise, and resources that no institution could buy: the legal mind who drafts the bylaw, the press contact who covers the story, the philanthropist who was waiting to be invited. <em>The room is the funding mechanism. The money follows the room.</em></p>
+
         <p>Every show is a funraiser for what stays after the lights go down. <em>The giving is the point.</em> The show earns what the campus keeps.</p>
       </div>
       <div class="giveback-image">
@@ -1041,6 +1281,32 @@
 <section class="dedication reveal">
   <div class="dedication-mark">For My Mom</div>
   <p class="dedication-text">For every mother who watched her child <em>disappear</em> into a system that treated crisis as pathology, and refused to give up hope.</p>
+</section>
+
+<!-- ABOUT THE CREATOR / BACK COVER -->
+<section class="reveal" style="padding:5rem 2rem; max-width:1140px; margin:0 auto;">
+  <span class="label copper" style="text-align:center; margin-bottom:2.5rem;">About The Creator</span>
+  <div class="medium-layout">
+    <div class="medium-image">
+      <div class="image-placeholder" style="aspect-ratio:4 / 5;">
+        <span>Photo of Bret Warshawsky<br />[ placeholder ]</span>
+      </div>
+    </div>
+    <div class="medium-text">
+      <div class="creator-name">Bret Warshawsky</div>
+      <div class="creator-role">Creator, A One Mind Show</div>
+      <hr class="gold-rule" />
+      <p>[ Short bio, three to four sentences, to be written from the bio documents. Social systems reformer, documentary filmmaker, artivist, and the one standing alone on stage conducting all of this. Why this show, why now, why him. ]</p>
+      <div style="margin:1.5rem 0;">
+        <a href="#" class="pb-button">
+          <div class="pb-button-inner">
+            <span class="label">Why Me? &rarr;</span>
+          </div>
+        </a>
+      </div>
+      <div class="creator-email">bret@bretwarshawsky.com</div>
+    </div>
+  </div>
 </section>
 
 <!-- FOOTER -->
