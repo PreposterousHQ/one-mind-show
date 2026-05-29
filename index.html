@@ -634,6 +634,27 @@
     font-weight: 500;
   }
 
+  /* Section VIII: Part of a Larger Story */
+  #ecosystem {
+    text-align: center;
+    padding: 7rem 2rem 5rem;
+    background: radial-gradient(ellipse at 50% 50%, rgba(212, 166, 71, 0.06) 0%, transparent 65%);
+  }
+
+  #ecosystem h2 {
+    font-size: clamp(2rem, 5vw, 3.8rem);
+    line-height: 1.1;
+    margin-bottom: 2rem;
+  }
+
+  #ecosystem > p {
+    max-width: 52ch;
+    margin: 0 auto 3.5rem;
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+
   /* Link to studio */
   .ecosystem {
     text-align: center;
@@ -960,7 +981,7 @@
   </section>
 
   <!-- ECOSYSTEM -->
-  <section class="reveal">
+  <section id="ecosystem" class="reveal">
     <span class="section-mark"><span class="roman">VIII</span>Part of a Larger Story</span>
     <h2>One <em>room</em> inside a larger one.</h2>
     <p>The show is one room inside a larger movement, a Civil Rights Moviement for the Soul unfolding across stage, screen, story, and technology. This is the part you can walk into. The part where something gets built.</p>
