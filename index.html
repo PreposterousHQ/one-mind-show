@@ -304,7 +304,8 @@
   .stage-caption .hashtag {
     margin: 0 auto;
     font-family: var(--mono);
-    font-size: 3.5rem;
+    font-size: clamp(1.4rem, 7vw, 3.5rem);
+    overflow-wrap: anywhere;
     letter-spacing: 0.06em;
     color: var(--ember);
     font-weight: 500;
@@ -830,9 +831,16 @@
     margin: 0 auto 1.2rem;
   }
 
+  /* Long-form bio page (why-me.html) */
+  .bio {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+  }
+
   /* Responsive */
   @media (max-width: 640px) {
-    main { padding: 4rem 1.5rem 3rem; }
+    main { padding: 2rem 1.5rem 3rem; }
     section { padding: 3.5rem 0; }
     .pull { padding: 1.5rem 0; margin: 2rem auto; }
     .dedication { padding: 5rem 1.5rem; }
@@ -844,6 +852,13 @@
       line-height: 1.8;
     }
     .triad-item { padding-left: 1.25rem; }
+    /* Phone fixes, 2026-10-24 */
+    .stage-caption { padding: 0.5rem 1rem 1.5rem; }
+    #opening { padding: 4rem 0; }
+    .opening-inner { padding: 0 1.5rem; }
+    .playbill-box-inner { padding: 2rem 1.25rem; }
+    .scene-conductor { padding: 1.75rem 1.25rem; }
+    .bio { padding: 3rem 0; }
   }
 
   /* Reduce motion */
@@ -1336,7 +1351,7 @@
       <hr class="gold-rule" />
       <p>Bret Warshawsky is a writer, speaker, futurist, and polymath working at the intersection of consciousness, story, systems change, and mental health reform. After thirty-plus years of living with perceived mental illness, thirteen-plus of them off psychiatric medication and still in the work, his perspective on what the system calls illness and what other traditions call spiritual emergence is earned from the inside. His body of work spans more than a decade of international systems-design and co-creation, including thirteen years building Symphonics with creative partner Andrea Harding, direct collaboration with the late futurist Barbara Marx Hubbard, and the co-creation of Synergy Hub 1.0 in Rotterdam, a sixteen-month gift-economy living experiment. Today he is the co-visionary behind the Mental Health Reformation in New Jersey with business partner Janet Werner, and the creator of A One Mind Show.</p>
       <div style="margin:1.5rem 0;">
-        <a href="why-me.html" class="pb-button">
+        <a href="why-me.html" class="pb-button" target="_blank" rel="noopener">
           <div class="pb-button-inner">
             <span class="label">Why Me? &rarr;</span>
           </div>
@@ -1358,17 +1373,23 @@
 </footer>
 
 <script>
-  // Reveal-on-scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  // Reveal-on-scroll. Fires as soon as an element's top edge clears the
+  // bottom 10% of the screen. (A percentage threshold never fires for blocks
+  // much taller than the screen, which left long sections blank on phones.)
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
+    reveals.forEach(el => observer.observe(el));
+  } else {
+    reveals.forEach(el => el.classList.add('in'));
+  }
 </script>
 
 </body>
